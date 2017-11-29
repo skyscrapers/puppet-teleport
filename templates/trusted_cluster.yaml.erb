@@ -1,0 +1,18 @@
+# cluster.yaml
+kind: trusted_cluster
+version: v2
+metadata:
+  # the trusted cluster name MUST match the 'cluster_name' setting of the
+  # cluster
+  name: <%= @name %>
+spec:
+  # this field allows to create tunnels that are disabled, but can be enabled later.
+  enabled: <%= @enabled %>
+  # the token expected by the "main" cluster:
+  token: <%= @token %>
+  # the address in 'host:port' form of the reverse tunnel listening port on the
+  # "master" proxy server:
+  tunnel_addr: <%= @tunnel_addr %>
+  # the address in 'host:port' form of the web listening port on the
+  # "master" proxy server:
+  web_proxy_addr: <%= @web_proxy_addr %>
