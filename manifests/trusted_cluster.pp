@@ -23,9 +23,8 @@ define teleport::trusted_cluster (
     content => template('teleport/trusted_cluster.yaml.erb'),
   } ~>
   exec { "create_teleport_trusted_cluster_${name}":
-    command     => "${teleport::bin_dir}/tctl create /etc/teleport_trusted_cluster_${name}.yaml",
+    command     => "${teleport::bin_dir}/tctl create -f /etc/teleport_trusted_cluster_${name}.yaml",
     refreshonly => true,
-    returns     => [0, 1], # will return 1 if the cluster already exists
     require     => Class['teleport::install']
   }
 }
