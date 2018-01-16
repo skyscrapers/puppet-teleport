@@ -21,7 +21,8 @@ class teleport::install {
       target => "${teleport::extract_path}/teleport/tctl";
     "${teleport::bin_dir}/teleport":
       ensure => link,
-      target => "${teleport::extract_path}/teleport/teleport";
+      target => "${teleport::extract_path}/teleport/teleport",
+      notify => Service['teleport'];
     "${teleport::bin_dir}/tsh":
       ensure => link,
       target => "${teleport::extract_path}/teleport/tsh";
